@@ -113,6 +113,7 @@ supported_targets! {
 
     ("i686-unknown-freebsd", i686_unknown_freebsd),
     ("x86_64-unknown-freebsd", x86_64_unknown_freebsd),
+    ("x86_64-unknown-kfreebsd-gnu", x86_64_unknown_kfreebsd_gnu),
 
     ("i686-unknown-dragonfly", i686_unknown_dragonfly),
     ("x86_64-unknown-dragonfly", x86_64_unknown_dragonfly),
