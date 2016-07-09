@@ -15,8 +15,6 @@ pub fn target() -> Target {
     base.cpu = "x86-64".to_string();
     base.max_atomic_width = 64;
     base.pre_link_args.push("-m64".to_string());
-    // TODO: Why do we have to set target_family for this target only? Where is it supposed to be set?
-    base.target_family = Some("unix".to_string());
 
     Target {
         llvm_target: "x86_64-unknown-kfreebsd-gnu".to_string(),
