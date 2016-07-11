@@ -35,6 +35,7 @@ pub fn clone() -> Option<Vec<Vec<u8>>> { imp::clone() }
 #[cfg(any(target_os = "linux",
           target_os = "android",
           target_os = "freebsd",
+          target_os = "kfreebsd",
           target_os = "dragonfly",
           target_os = "bitrig",
           target_os = "netbsd",

@@ -305,6 +305,7 @@ impl DirEntry {
     }
 
     #[cfg(any(target_os = "freebsd",
+              target_os = "kfreebsd",
               target_os = "openbsd",
               target_os = "bitrig",
               target_os = "netbsd",
@@ -318,6 +319,7 @@ impl DirEntry {
               target_os = "netbsd",
               target_os = "openbsd",
               target_os = "freebsd",
+              target_os = "kfreebsd",
               target_os = "dragonfly",
               target_os = "bitrig"))]
     fn name_bytes(&self) -> &[u8] {

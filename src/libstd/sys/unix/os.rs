@@ -401,6 +401,7 @@ pub fn args() -> Args {
 #[cfg(any(target_os = "linux",
           target_os = "android",
           target_os = "freebsd",
+          target_os = "kfreebsd",
           target_os = "dragonfly",
           target_os = "bitrig",
           target_os = "netbsd",
