@@ -102,6 +102,7 @@ pub type _Unwind_Exception_Cleanup_Fn = extern "C" fn(unwind_code: _Unwind_Reaso
 
 #[cfg_attr(any(all(target_os = "linux", not(target_env = "musl")),
                target_os = "freebsd",
+               target_os = "kfreebsd",
                target_os = "solaris",
                all(target_os = "linux",
                    target_env = "musl",
