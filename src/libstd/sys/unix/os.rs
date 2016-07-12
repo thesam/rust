@@ -191,7 +191,7 @@ impl StdError for JoinPathsError {
     fn description(&self) -> &str { "failed to join paths" }
 }
 
-#[cfg(any(target_os = "freebsd", target_os = "kfreebsd"))]
+#[cfg(target_os = "freebsd")]
 pub fn current_exe() -> io::Result<PathBuf> {
     unsafe {
         let mut mib = [libc::CTL_KERN as c_int,
@@ -255,7 +255,7 @@ pub fn current_exe() -> io::Result<PathBuf> {
     }
 }
 
-#[cfg(any(target_os = "linux", target_os = "android", target_os = "emscripten"))]
+#[cfg(any(target_os = "linux", target_os = "android", target_os = "emscripten", target_os = "kfreebsd"))]
 pub fn current_exe() -> io::Result<PathBuf> {
     ::fs::read_link("/proc/self/exe")
 }

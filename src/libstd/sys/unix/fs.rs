@@ -24,17 +24,19 @@ use sys::time::SystemTime;
 use sys::{cvt, cvt_r};
 use sys_common::{AsInner, FromInner};
 
-#[cfg(any(target_os = "linux", target_os = "emscripten"))]
+#[cfg(any(target_os = "linux", target_os = "kfreebsd", target_os = "emscripten"))]
 use libc::{stat64, fstat64, lstat64, off64_t, ftruncate64, lseek64, dirent64, readdir64_r, open64};
 #[cfg(target_os = "android")]
 use libc::{stat as stat64, fstat as fstat64, lstat as lstat64, off64_t, lseek64,
            dirent as dirent64, open as open64};
 #[cfg(not(any(target_os = "linux",
+              target_os = "kfreebsd",
               target_os = "emscripten",
               target_os = "android")))]
 use libc::{stat as stat64, fstat as fstat64, lstat as lstat64, off_t as off64_t,
            ftruncate as ftruncate64, lseek as lseek64, dirent as dirent64, open as open64};
 #[cfg(not(any(target_os = "linux",
+              target_os = "kfreebsd",
               target_os = "emscripten",
               target_os = "solaris")))]
 use libc::{readdir_r as readdir64_r};
@@ -297,6 +299,7 @@ impl DirEntry {
     #[cfg(any(target_os = "macos",
               target_os = "ios",
               target_os = "linux",
+              target_os = "kfreebsd",
               target_os = "emscripten",
               target_os = "android",
               target_os = "solaris"))]
@@ -305,7 +308,6 @@ impl DirEntry {
     }
 
     #[cfg(any(target_os = "freebsd",
-              target_os = "kfreebsd",
               target_os = "openbsd",
               target_os = "bitrig",
               target_os = "netbsd",
@@ -319,7 +321,6 @@ impl DirEntry {
               target_os = "netbsd",
               target_os = "openbsd",
               target_os = "freebsd",
-              target_os = "kfreebsd",
               target_os = "dragonfly",
               target_os = "bitrig"))]
     fn name_bytes(&self) -> &[u8] {
@@ -330,6 +331,7 @@ impl DirEntry {
     }
     #[cfg(any(target_os = "android",
               target_os = "linux",
+              target_os = "kfreebsd",
               target_os = "emscripten"))]
     fn name_bytes(&self) -> &[u8] {
         unsafe {
