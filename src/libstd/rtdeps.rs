@@ -24,6 +24,11 @@
 #[link(name = "pthread")]
 extern {}
 
+#[cfg(target_os = "kfreebsd")]
+#[link(name = "dl")]
+#[link(name = "pthread")]
+extern {}
+
 #[cfg(target_os = "android")]
 #[link(name = "dl")]
 #[link(name = "log")]
