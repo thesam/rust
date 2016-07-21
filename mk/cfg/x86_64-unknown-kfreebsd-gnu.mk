@@ -1,4 +1,5 @@
 # x86_64-unknown-kfreebsd-gnu configuration
+CROSS_PREFIX_x86_64-unknown-kfreebsd-gnu=x86_64-kfreebsd-gnu-
 CC_x86_64-unknown-kfreebsd-gnu=$(CC)
 CXX_x86_64-unknown-kfreebsd-gnu=$(CXX)
 CPP_x86_64-unknown-kfreebsd-gnu=$(CPP)
