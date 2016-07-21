@@ -29,7 +29,7 @@ fn main() {
         build_libbacktrace(&host, &target);
     }
 
-    if target.contains("linux") {
+    if target.contains("linux") || target.contains("kfreebsd") {
         if target.contains("android") {
             println!("cargo:rustc-link-lib=dl");
             println!("cargo:rustc-link-lib=log");
