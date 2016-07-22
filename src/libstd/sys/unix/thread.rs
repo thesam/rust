@@ -92,8 +92,14 @@ impl Thread {
         }
     }
 
+    #[cfg(target_os = "kfreebsd")]
+    pub fn set_name(name: &CStr) {
+        unsafe {
+            libc::pthread_setname_np(libc::pthread_self(), name.as_ptr());
+        }
+    }
+
     #[cfg(any(target_os = "freebsd",
-              target_os = "kfreebsd",
               target_os = "dragonfly",
               target_os = "bitrig",
               target_os = "openbsd"))]
