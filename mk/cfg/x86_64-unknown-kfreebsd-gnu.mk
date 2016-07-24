@@ -9,7 +9,7 @@ CFG_STATIC_LIB_NAME_x86_64-unknown-kfreebsd-gnu=lib$(1).a
 CFG_LIB_GLOB_x86_64-unknown-kfreebsd-gnu=lib$(1)-*.so
 CFG_LIB_DSYM_GLOB_x86_64-unknown-kfreebsd-gnu=lib$(1)-*.dylib.dSYM
 CFG_JEMALLOC_CFLAGS_x86_64-unknown-kfreebsd-gnu := -m64
-CFG_GCCISH_CFLAGS_x86_64-unknown-kfreebsd-gnu := -Wall -Werror -g -fPIC -m64
+CFG_GCCISH_CFLAGS_x86_64-unknown-kfreebsd-gnu := -g -fPIC -m64
 CFG_GCCISH_CXXFLAGS_x86_64-unknown-kfreebsd-gnu := -fno-rtti
 CFG_GCCISH_LINK_FLAGS_x86_64-unknown-kfreebsd-gnu := -shared -fPIC -ldl -pthread  -lrt -g -m64
 CFG_GCCISH_DEF_FLAG_x86_64-unknown-kfreebsd-gnu := -Wl,--export-dynamic,--dynamic-list=
