@@ -37,7 +37,9 @@ static ENV_LOCK: Mutex = Mutex::new();
 
 
 extern {
-    #[cfg_attr(any(target_os = "linux", target_os = "emscripten"),
+    #[cfg_attr(any(target_os = "linux",
+                   target_os = "emscripten",
+                   target_os = "kfreebsd"),
                link_name = "__errno_location")]
     #[cfg_attr(any(target_os = "bitrig",
                    target_os = "netbsd",
