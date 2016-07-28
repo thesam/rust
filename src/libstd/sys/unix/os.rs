@@ -84,7 +84,7 @@ pub fn errno() -> i32 {
 /// Gets a detailed string description for the given error number.
 pub fn error_string(errno: i32) -> String {
     extern {
-        #[cfg_attr(any(target_os = "linux", target_env = "newlib"),
+        #[cfg_attr(any(target_os = "linux", target_env = "newlib", target_os = "kfreebsd"),
                    link_name = "__xpg_strerror_r")]
         fn strerror_r(errnum: c_int, buf: *mut c_char,
                       buflen: libc::size_t) -> c_int;
