@@ -26,8 +26,7 @@ mod imp {
     use std::io;
     use libc;
 
-    #[cfg(any(target_os = "linux",
-              target_os = "kfreebsd"))]
+    #[cfg(target_os = "linux")]
     mod os {
         use libc;
 
@@ -48,7 +47,8 @@ mod imp {
         pub const F_SETLKW: libc::c_int = 7;
     }
 
-    #[cfg(target_os = "freebsd")]
+    #[cfg(any(target_os = "freebsd",
+              target_os = "kfreebsd"))]
     mod os {
         use libc;
 
