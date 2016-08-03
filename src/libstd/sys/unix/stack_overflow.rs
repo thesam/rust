@@ -205,6 +205,7 @@ mod imp {
               target_os = "bitrig",
               target_os = "dragonfly",
               target_os = "freebsd",
+              target_os = "kfreebsd",
               target_os = "solaris",
               all(target_os = "netbsd", not(target_vendor = "rumprun")),
               target_os = "openbsd")))]
