@@ -273,7 +273,7 @@ pub mod guard {
             panic!("failed to allocate a guard page");
         }
 
-        let offset = if cfg!(any(target_os = "linux", target_os = "freebsd", target_os = "kfreebsd")) {
+        let offset = if cfg!(any(target_os = "linux", target_os = "freebsd")) {
             2
         } else {
             1
