@@ -180,6 +180,7 @@ impl Drop for Thread {
 
 #[cfg(all(not(all(target_os = "linux", not(target_env = "musl"))),
           not(target_os = "freebsd"),
+          not(target_os = "kfreebsd"),
           not(target_os = "macos"),
           not(target_os = "bitrig"),
           not(all(target_os = "netbsd", not(target_vendor = "rumprun"))),
@@ -194,6 +195,7 @@ pub mod guard {
 
 #[cfg(any(all(target_os = "linux", not(target_env = "musl")),
           target_os = "freebsd",
+          target_os = "kfreebsd",
           target_os = "macos",
           target_os = "bitrig",
           all(target_os = "netbsd", not(target_vendor = "rumprun")),
@@ -217,6 +219,7 @@ pub mod guard {
     }
 
     #[cfg(any(target_os = "android", target_os = "freebsd",
+              target_os = "kfreebsd",
               target_os = "linux", target_os = "netbsd"))]
     unsafe fn get_stack_start() -> Option<*mut libc::c_void> {
         let mut ret = None;
@@ -270,7 +273,7 @@ pub mod guard {
             panic!("failed to allocate a guard page");
         }
 
-        let offset = if cfg!(any(target_os = "linux", target_os = "freebsd")) {
+        let offset = if cfg!(any(target_os = "linux", target_os = "freebsd", target_os = "kfreebsd")) {
             2
         } else {
             1
@@ -309,6 +312,7 @@ pub mod guard {
     }
 
     #[cfg(any(target_os = "android", target_os = "freebsd",
+              target_os = "kfreebsd",
               target_os = "linux", target_os = "netbsd"))]
     pub unsafe fn current() -> Option<usize> {
         let mut ret = None;
@@ -347,6 +351,7 @@ pub mod guard {
 // storage.  We need that information to avoid blowing up when a small stack
 // is created in an application with big thread-local storage requirements.
 // See #6233 for rationale and details.
+//TODO: kfreebsd?
 #[cfg(target_os = "linux")]
 #[allow(deprecated)]
 fn min_stack_size(attr: *const libc::pthread_attr_t) -> usize {
