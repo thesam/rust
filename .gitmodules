@@ -11,11 +11,9 @@
 [submodule "src/jemalloc"]
 	path = src/jemalloc
 	url = https://github.com/thesam/jemalloc.git
-	branch = kfreebsd
 [submodule "src/rust-installer"]
 	path = src/rust-installer
 	url = https://github.com/rust-lang/rust-installer.git
 [submodule "src/liblibc"]
 	path = src/liblibc
 	url = https://github.com/thesam/libc.git
-	branch = kfreebsd
