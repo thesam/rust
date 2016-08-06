@@ -351,7 +351,7 @@ pub mod guard {
 // storage.  We need that information to avoid blowing up when a small stack
 // is created in an application with big thread-local storage requirements.
 // See #6233 for rationale and details.
-//TODO: kfreebsd?
+//FIXME:KFREEBSD?
 #[cfg(target_os = "linux")]
 #[allow(deprecated)]
 fn min_stack_size(attr: *const libc::pthread_attr_t) -> usize {

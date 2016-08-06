@@ -257,7 +257,10 @@ pub fn current_exe() -> io::Result<PathBuf> {
     }
 }
 
-#[cfg(any(target_os = "linux", target_os = "android", target_os = "emscripten", target_os = "kfreebsd"))]
+#[cfg(any(target_os = "linux",
+          target_os = "android",
+          target_os = "emscripten",
+          target_os = "kfreebsd"))]
 pub fn current_exe() -> io::Result<PathBuf> {
     ::fs::read_link("/proc/self/exe")
 }
